@@ -1,9 +1,13 @@
-import brownCards from './brown';
-import blueCards from './blue';
-import greenCards from './green';
-
+import brownCardsData from './brown/index.js';
+import blueCardsData from './blue/index.js';
+import greenCardsData from './green/index.js';
+//import ancientsData from '../ancients.js'
 export {
-  brownCards,
-  blueCards,
-  greenCards
+  brownCardsData,
+  blueCardsData,
+  greenCardsData
 }
+
+console.log(brownCardsData)
+//console.log(ancientsData)
+//let azatot=ancientsData[0]
