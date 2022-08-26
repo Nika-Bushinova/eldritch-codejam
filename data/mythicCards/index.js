@@ -20,12 +20,14 @@ mixCard.style.visibility='hidden'
 //////////////////////////////////////////////////////////////////////////
 ancientsHTMLs.forEach((ancientsHTML, index) => {
 
-  ancientsHTML.addEventListener('click', (event) => {
+  ancientsHTML.addEventListener('click', add)
+  function add(event){
     ancientsHTMLs.forEach((ancientsHTML) => {
       ancientsHTML.classList.remove('active')
       if(deckHTML .style.visibility==='visible'){
         deckHTML .style.visibility='hidden'
       }
+      
     })
     ancientsHTML.classList.add('active')
 
@@ -41,10 +43,11 @@ ancientsHTMLs.forEach((ancientsHTML, index) => {
     arrPush(ancientsData[index].thirdStage)
 
     difficultyHTML.style.visibility = "visible"
-
+    this.removeEventListener('click', add);//событие произойдет только один раз
+  }
   })
 
-})
+console.log(arrCountCards)
 /////////////////////////////////////////////////////////////////////////
 let arrGreen = []
 let arrBrown = []
@@ -52,7 +55,7 @@ let arrBlue = []
 
 difficultiesHTML[0].addEventListener('click', ()=>{//события для уровней
   mixCard.style.visibility='visible'
-
+  difficultiesHTML[0].style.background='red'
 })
 
 mixCard.addEventListener('click', addCards)
@@ -79,7 +82,6 @@ function addCards() {
       if (arr.length < arrLength && difficulties[num].id === element.difficulty) {
         arr.push(element)
         cardsData.splice(index, 1)
-
         //  arr.push(element.id)
       }
     })
@@ -97,6 +99,17 @@ function addCards() {
     let dotArr = []
     arr.forEach((elem, ind) => {
       if (dotArr.length < arrCountCards[num]) {
+         arr.splice(ind,1)///нужны уникальные
+        dotArr.push(elem)
+
+      }
+    })
+    commonArr.push(dotArr)
+  }
+  function dotArrs2(arr, num) {
+    let dotArr = []
+    arr.forEach((elem, ind) => {
+      if (dotArr.length < arrCountCards[num]) {
         // arr.splice(ind,1)///нужны уникальные
         dotArr.push(elem)
 
@@ -110,13 +123,14 @@ function addCards() {
   dotArrs(arrGreen, 3)
   dotArrs(arrBrown, 4)
   dotArrs(arrBlue, 5)
-  dotArrs(arrGreen, 6)
-  dotArrs(arrBrown, 7)
-  dotArrs(arrBlue, 8)
+  dotArrs2(arrGreen, 6)
+  dotArrs2(arrBrown, 7)
+  dotArrs2(arrBlue, 8)
+  
   function dotFull(arr) {
     dots.forEach((dot, dotIndex) => {//заполняем точки-стадии значениями из массива
       dot.textContent = arr[dotIndex].length
-     // arrCountCards.length >= 9 ? arrCountCards.splice(0, arrCountCards.length) : arrCountCards
+      arrCountCards.length >= 9 ? arrCountCards.splice(0, arrCountCards.length) : arrCountCards
     })
   }
   dotFull(commonArr)//заполняем точки пока неперевернутым массивом
@@ -131,6 +145,7 @@ function addCards() {
     sliced_array.push(commonArr.slice(i, i + 3));
   }
   sliced_array.forEach((el) => {//перемешиваем элементы в рамках уровня
+    shuffle(el)
     shuffle(el)
   })
 
@@ -149,6 +164,7 @@ function addCards() {
           el.splice(i, 1)
           dotFull(commonArrNotReversed)
         })
+        
         card.addEventListener('click', (event) => {
           card.style.display = 'none'
           el.splice(i, 1)
@@ -160,10 +176,9 @@ function addCards() {
   })
 
   console.log(commonArr)
-
-  // console.log(arrGreen)
-  //console.log(arrBrown)
-  //console.log(arrBlue)
+   console.log(arrGreen)
+  console.log(arrBrown)
+  console.log(arrBlue)
 }
 
 
