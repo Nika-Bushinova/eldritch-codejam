@@ -141,3 +141,11 @@ code {
    justify-content: space-between;
    width: 100vw
 }
+.div__button{
+   top:50%;
+   position:absolute;
+   left:70%;
+   padding:10px;
+   background-color: red;
+   border-radius: 40%;
+}
