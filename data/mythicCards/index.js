@@ -64,7 +64,6 @@ difficultiesHTML[0].addEventListener('click', ()=>{//события для ур�
   shuffle(greenCardsData)
   shuffle(brownCardsData)
   shuffle(blueCardsData)
-console.log(greenCardsData)
   function dotsArr(cardsData, arr, arrLength, num) {
     cardsData.forEach((element, index) => {
       if (arr.length < arrLength && difficulties[num].id === element.difficulty) {
@@ -282,10 +281,8 @@ function addCards() {
     shuffle(el)
    
   })
-console.log(sliced_array)
   sliced_array.forEach((element) => {//показываем карты согласно перемешенному массиву и удаляем показанные элементы по клику
     element.forEach((el) => {
-      console.log(el)
       el.forEach((e, i) => {  
         
         let card = deckHTML.appendChild(document.createElement('div'))
@@ -304,7 +301,6 @@ console.log(sliced_array)
         card.addEventListener('click', (event) => {
           card.style.display = 'none'
           el.splice(i, 1)
-            console.log(el)
           dotFull(commonArrNotReversed)
         })
       
