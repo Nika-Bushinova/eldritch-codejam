@@ -1,5 +1,4 @@
 import brownCardsData from './brown/index.js';
-console.log(brownCardsData)
 import blueCardsData from './blue/index.js';
 import greenCardsData from './green/index.js';
 import ancientsData from '../ancients.js'
@@ -47,28 +46,48 @@ ancientsHTMLs.forEach((ancientsHTML, index) => {
   }
   })
 
-console.log(arrCountCards)
 /////////////////////////////////////////////////////////////////////////
 let arrGreen = []
 let arrBrown = []
 let arrBlue = []
-
+///////////////////////////////////////////////////////////////////////////////////////////отбор сложностей карт по кнопке ОЧЕНЬ легкий
 difficultiesHTML[0].addEventListener('click', ()=>{//события для уровней
+  difficultiesHTML.forEach((element)=>{
+    element.style.background='none'
+  })
   mixCard.style.visibility='visible'
   difficultiesHTML[0].style.background='red'
+  let arrGreenLength = arrCountCards[0] + arrCountCards[3] + arrCountCards[6]
+  let arrBrownLength = arrCountCards[1] + arrCountCards[4] + arrCountCards[7]
+  let arrBlueLength = arrCountCards[2] + arrCountCards[5] + arrCountCards[8]
+  //  this.removeEventListener('click', addCards);//событие произойдет только один раз
+  shuffle(greenCardsData)
+  shuffle(brownCardsData)
+  shuffle(blueCardsData)
+console.log(greenCardsData)
+  function dotsArr(cardsData, arr, arrLength, num) {
+    cardsData.forEach((element, index) => {
+      if (arr.length < arrLength && difficulties[num].id === element.difficulty) {
+        arr.push(element)
+       // cardsData.splice(index, 1)
+        //  arr.push(element.id)
+      }
+    })
+  }
+  dotsArr(greenCardsData, arrGreen, arrGreenLength, 0)
+  dotsArr(greenCardsData, arrGreen, arrGreenLength, 1)
+  dotsArr(brownCardsData, arrBrown, arrBrownLength, 0)
+  dotsArr(brownCardsData, arrBrown, arrBrownLength, 1)
+  dotsArr(blueCardsData, arrBlue, arrBlueLength, 0)
+  dotsArr(blueCardsData, arrBlue, arrBlueLength, 1)
 })
-
-mixCard.addEventListener('click', addCards)
-mixCard.addEventListener('click',()=>{
-  mixCard.style.visibility='hidden'
-  deckHTML .style.visibility='visible'
-})
-function shuffle(array) {//перемешать массив
-  array.sort(() => Math.random() - 0.5);
-}
-
-function addCards() {
-  console.log(arrCountCards)
+////////////////////////////////////////////////////////////////////////////////////ЛЕГКИЙ
+difficultiesHTML[1].addEventListener('click', ()=>{//события для уровней
+  difficultiesHTML.forEach((element)=>{
+    element.style.background='none'
+  })
+  mixCard.style.visibility='visible'
+  difficultiesHTML[1].style.background='red'
   let arrGreenLength = arrCountCards[0] + arrCountCards[3] + arrCountCards[6]
   let arrBrownLength = arrCountCards[1] + arrCountCards[4] + arrCountCards[7]
   let arrBlueLength = arrCountCards[2] + arrCountCards[5] + arrCountCards[8]
@@ -81,27 +100,132 @@ function addCards() {
     cardsData.forEach((element, index) => {
       if (arr.length < arrLength && difficulties[num].id === element.difficulty) {
         arr.push(element)
-        cardsData.splice(index, 1)
+        //cardsData.splice(index, 1)
         //  arr.push(element.id)
       }
     })
   }
-  dotsArr(greenCardsData, arrGreen, arrGreenLength, 0)
   dotsArr(greenCardsData, arrGreen, arrGreenLength, 1)
-  dotsArr(brownCardsData, arrBrown, arrBrownLength, 0)
+  dotsArr(greenCardsData, arrGreen, arrGreenLength, 0)
   dotsArr(brownCardsData, arrBrown, arrBrownLength, 1)
-  dotsArr(blueCardsData, arrBlue, arrBlueLength, 0)
+  dotsArr(brownCardsData, arrBrown, arrBrownLength, 0)
   dotsArr(blueCardsData, arrBlue, arrBlueLength, 1)
+  dotsArr(blueCardsData, arrBlue, arrBlueLength, 0)
+})
+//////////////////////////////////////////////////////////////////////////////////////////////////НОРМАЛЬНЫЙ
+difficultiesHTML[2].addEventListener('click', ()=>{//события для уровней
+  difficultiesHTML.forEach((element)=>{
+    element.style.background='none'
+  })
+  mixCard.style.visibility='visible'
+  difficultiesHTML[2].style.background='red'
+  let arrGreenLength = arrCountCards[0] + arrCountCards[3] + arrCountCards[6]
+  let arrBrownLength = arrCountCards[1] + arrCountCards[4] + arrCountCards[7]
+  let arrBlueLength = arrCountCards[2] + arrCountCards[5] + arrCountCards[8]
+  //  this.removeEventListener('click', addCards);//событие произойдет только один раз
+  shuffle(greenCardsData)
+  shuffle(brownCardsData)
+  shuffle(blueCardsData)
 
+  function dotsArr(cardsData, arr, arrLength, num) {
+    cardsData.forEach((element, index) => {
+      if (arr.length < arrLength && difficulties[num].id === element.difficulty) {
+        arr.push(element)
+        //cardsData.splice(index, 1)
+        //  arr.push(element.id)
+      }
+    })
+  }
+  dotsArr(greenCardsData, arrGreen, arrGreenLength, 1)
+  dotsArr(greenCardsData, arrGreen, arrGreenLength, 2)
+  dotsArr(greenCardsData, arrGreen, arrGreenLength, 0)
+  dotsArr(brownCardsData, arrBrown, arrBrownLength, 1)
+  dotsArr(brownCardsData, arrBrown, arrBrownLength, 2)
+  dotsArr(brownCardsData, arrBrown, arrBrownLength, 0)
+  dotsArr(blueCardsData, arrBlue, arrBlueLength, 1)
+  dotsArr(blueCardsData, arrBlue, arrBlueLength, 2)
+  dotsArr(blueCardsData, arrBlue, arrBlueLength, 0)
+})
+/////////////////////////////////////////////////////////////////////////////////////////////////////////высокий
+difficultiesHTML[3].addEventListener('click', ()=>{//события для уровней
+  difficultiesHTML.forEach((element)=>{
+    element.style.background='none'
+  })
+  mixCard.style.visibility='visible'
+  difficultiesHTML[3].style.background='red'
+  let arrGreenLength = arrCountCards[0] + arrCountCards[3] + arrCountCards[6]
+  let arrBrownLength = arrCountCards[1] + arrCountCards[4] + arrCountCards[7]
+  let arrBlueLength = arrCountCards[2] + arrCountCards[5] + arrCountCards[8]
+  //  this.removeEventListener('click', addCards);//событие произойдет только один раз
+  shuffle(greenCardsData)
+  shuffle(brownCardsData)
+  shuffle(blueCardsData)
 
+  function dotsArr(cardsData, arr, arrLength, num) {
+    cardsData.forEach((element, index) => {
+      if (arr.length < arrLength && difficulties[num].id === element.difficulty) {
+        arr.push(element)
+        //cardsData.splice(index, 1)
+        //  arr.push(element.id)
+      }
+    })
+  }
+  dotsArr(greenCardsData, arrGreen, arrGreenLength, 1)
+  dotsArr(greenCardsData, arrGreen, arrGreenLength, 2)
+  dotsArr(brownCardsData, arrBrown, arrBrownLength, 1)
+  dotsArr(brownCardsData, arrBrown, arrBrownLength, 2)
+  dotsArr(blueCardsData, arrBlue, arrBlueLength, 1)
+  dotsArr(blueCardsData, arrBlue, arrBlueLength, 2)
+})
+////////////////////////////////////////////////////////////////////////////////////////////ОЧЕНЬ ТЯЖЕЛЫЙ
+difficultiesHTML[4].addEventListener('click', ()=>{//события для уровней
+  difficultiesHTML.forEach((element)=>{
+    element.style.background='none'
+  })
+  mixCard.style.visibility='visible'
+  difficultiesHTML[4].style.background='red'
+  let arrGreenLength = arrCountCards[0] + arrCountCards[3] + arrCountCards[6]
+  let arrBrownLength = arrCountCards[1] + arrCountCards[4] + arrCountCards[7]
+  let arrBlueLength = arrCountCards[2] + arrCountCards[5] + arrCountCards[8]
+  //  this.removeEventListener('click', addCards);//событие произойдет только один раз
+  shuffle(greenCardsData)
+  shuffle(brownCardsData)
+  shuffle(blueCardsData)
+
+  function dotsArr(cardsData, arr, arrLength, num) {
+    cardsData.forEach((element, index) => {
+      if (arr.length < arrLength && difficulties[num].id === element.difficulty) {
+        arr.push(element)
+       // cardsData.splice(index, 1)
+        //  arr.push(element.id)
+      }
+    })
+  }
+  dotsArr(greenCardsData, arrGreen, arrGreenLength, 2)
+  dotsArr(greenCardsData, arrGreen, arrGreenLength, 1)
+  dotsArr(brownCardsData, arrBrown, arrBrownLength, 2)
+  dotsArr(brownCardsData, arrBrown, arrBrownLength, 1)
+  dotsArr(blueCardsData, arrBlue, arrBlueLength, 2)
+  dotsArr(blueCardsData, arrBlue, arrBlueLength, 1)
+})
+mixCard.addEventListener('click', addCards)
+mixCard.addEventListener('click',()=>{
+  mixCard.style.visibility='hidden'
+  deckHTML .style.visibility='visible'
+})
+function shuffle(array) {//перемешать массив
+  array.sort(() => Math.random() - 0.5);
+}
+
+function addCards() {
   let commonArr = []
+  
   function dotArrs(arr, num) {
     let dotArr = []
     arr.forEach((elem, ind) => {
       if (dotArr.length < arrCountCards[num]) {
-         arr.splice(ind,1)///нужны уникальные
+        // arr.splice(ind,1)
         dotArr.push(elem)
-
       }
     })
     commonArr.push(dotArr)
@@ -110,12 +234,15 @@ function addCards() {
     let dotArr = []
     arr.forEach((elem, ind) => {
       if (dotArr.length < arrCountCards[num]) {
-        // arr.splice(ind,1)///нужны уникальные
         dotArr.push(elem)
 
       }
     })
     commonArr.push(dotArr)
+
+  }
+  function dotArrs3(arr) {
+    arr.splice(0,arr.length)
   }
   dotArrs(arrGreen, 0)
   dotArrs(arrBrown, 1)
@@ -126,11 +253,16 @@ function addCards() {
   dotArrs2(arrGreen, 6)
   dotArrs2(arrBrown, 7)
   dotArrs2(arrBlue, 8)
+  dotArrs3(arrGreen)
+  dotArrs3(arrBrown)
+  dotArrs3(arrBlue)
   
   function dotFull(arr) {
     dots.forEach((dot, dotIndex) => {//заполняем точки-стадии значениями из массива
       dot.textContent = arr[dotIndex].length
-      arrCountCards.length >= 9 ? arrCountCards.splice(0, arrCountCards.length) : arrCountCards
+     if(arrCountCards.length >= 9){
+      arrCountCards.splice(0, arrCountCards.length)
+     }
     })
   }
   dotFull(commonArr)//заполняем точки пока неперевернутым массивом
@@ -147,11 +279,14 @@ function addCards() {
   sliced_array.forEach((el) => {//перемешиваем элементы в рамках уровня
     shuffle(el)
     shuffle(el)
+    shuffle(el)
+   
   })
 
   sliced_array.forEach((element) => {//показываем карты согласно перемешенному массиву и удаляем показанные элементы по клику
     element.forEach((el) => {
-      el.forEach((e, i) => {
+      el.forEach((e, i) => {  
+        
         let card = deckHTML.appendChild(document.createElement('div'))
         card.style.background = 'url(' + e.cardFace + ')'+'bottom no-repeat'
         card.style.backgroundSize = '130px 190px'
@@ -161,11 +296,12 @@ function addCards() {
         card.style.top = '37%'
         card.addEventListener('click', (event) => {
           card.style.display = 'none'
-          el.splice(i, 1)
+         // sliced_array.splice(i, 1)
           dotFull(commonArrNotReversed)
         })
         
         card.addEventListener('click', (event) => {
+          console.log(el)
           card.style.display = 'none'
           el.splice(i, 1)
           dotFull(commonArrNotReversed)
@@ -174,27 +310,7 @@ function addCards() {
       })
     })
   })
-
-  console.log(commonArr)
-   console.log(arrGreen)
-  console.log(arrBrown)
-  console.log(arrBlue)
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export {
   brownCardsData,
   blueCardsData,
