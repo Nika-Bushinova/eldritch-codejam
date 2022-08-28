@@ -224,7 +224,7 @@ function addCards() {
     let dotArr = []
     arr.forEach((elem, ind) => {
       if (dotArr.length < arrCountCards[num]) {
-        // arr.splice(ind,1)
+        arr.splice(ind,1)
         dotArr.push(elem)
       }
     })
@@ -282,9 +282,10 @@ function addCards() {
     shuffle(el)
    
   })
-
+console.log(sliced_array)
   sliced_array.forEach((element) => {//показываем карты согласно перемешенному массиву и удаляем показанные элементы по клику
     element.forEach((el) => {
+      console.log(el)
       el.forEach((e, i) => {  
         
         let card = deckHTML.appendChild(document.createElement('div'))
@@ -299,11 +300,11 @@ function addCards() {
          // sliced_array.splice(i, 1)
           dotFull(commonArrNotReversed)
         })
-        
+        let k=Math.floor(Math.random()*3)
         card.addEventListener('click', (event) => {
-          console.log(el)
           card.style.display = 'none'
           el.splice(i, 1)
+            console.log(el)
           dotFull(commonArrNotReversed)
         })
       
